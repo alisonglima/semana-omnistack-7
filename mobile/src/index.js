@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
-import {Plataform, StyleSheet, Text, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {
-  createAppContaeiner,
-  createStackNavigator,
-} from '@react-navigation/native';
+import React from "react";
+import { YellowBox } from "react-native";
 
-import Routes from './routes';
+YellowBox.ignoreWarnings(["Unrecognized WebSocket"]);
+
+import Routes from "./routes";
+
+export default function App() {
+  return <Routes />;
+}
