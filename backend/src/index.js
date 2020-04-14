@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -10,7 +12,7 @@ const io = require('socket.io')(server);
 
 mongoose.connect(
   //  Adicionar string de conecção mongodb
-  'mongodb+srv://semana:semana@cluster0-mj2p3.mongodb.net/test?retryWrites=true&w=majority',
+  process.env.MONGO_URL,
   {
     useNewUrlParser: true,
     // Usando a propriedade abaixo devido a alerta de deprecated
