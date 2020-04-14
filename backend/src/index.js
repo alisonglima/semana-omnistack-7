@@ -9,7 +9,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 mongoose.connect(
-  //  Adicionar string de conecção mongodb
+  //  Adicionar string de conexão mongodb
   'mongodb+srv://',
   {
     useNewUrlParser: true,
