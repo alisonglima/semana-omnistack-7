@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import api from "../services/api";
+import ImagePicker from "react-native-image-picker";
 
 import {
   View,
@@ -12,6 +14,10 @@ import {
 export default class New extends Component {
   static navigationOptions = {
     headerTitle: "Nova publicação",
+    headerTitleStyle: {
+      fontWeight: "bold",
+      borderEndWidth: 10,
+    },
   };
 
   state = {
@@ -19,14 +25,75 @@ export default class New extends Component {
     place: "",
     description: "",
     hashtags: "",
+    preview: null,
+    image: null,
+  };
+
+  handleSelectImage = () => {
+    ImagePicker.showImagePicker(
+      {
+        title: "Selecionar imagem",
+      },
+      (upload) => {
+        if (upload.error) {
+          console.log("Error");
+        } else if (upload.didCancel) {
+          console.log("User canceled");
+        } else {
+          const preview = {
+            uri: `data:image/jpeg;base64,${upload.data}`,
+          };
+
+          let prefix;
+          let ext;
+
+          if (upload.fileName) {
+            [prefix, ext] = upload.fileName.split(".");
+            ext = ext.toLowerCase() === "heic" ? "jpg" : ext;
+          } else {
+            prefix = new Date().getTime();
+            ext = "jpg";
+          }
+
+          const image = {
+            uri: upload.uri,
+            type: upload.type,
+            name: `${prefix}.${ext}`,
+          };
+
+          this.setState({ preview, image });
+        }
+      }
+    );
+  };
+
+  handleSubmit = async () => {
+    const data = new FormData();
+
+    data.append("image", this.state.image);
+    data.append("author", this.state.author);
+    data.append("place", this.state.place);
+    data.append("description", this.state.description);
+    data.append("hashtags", this.state.hashtags);
+
+    await api.post("posts", data);
+
+    this.props.navigation.navigate("Feed");
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.selectButton} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.selectButton}
+          onPress={this.handleSelectImage}
+        >
           <Text style={styles.selectButtonText}>Selecionar imagem</Text>
         </TouchableOpacity>
+
+        {this.state.preview && (
+          <Image style={styles.preview} source={this.state.preview} />
+        )}
 
         <TextInput
           style={styles.input}
@@ -45,7 +112,7 @@ export default class New extends Component {
           placeholder="Local da foto"
           placeholderTextColor="#999"
           value={this.state.place}
-          onChangeText={(place) => this.setState({ author })}
+          onChangeText={(place) => this.setState({ place })}
         />
 
         <TextInput
@@ -55,7 +122,7 @@ export default class New extends Component {
           placeholder="Descrição"
           placeholderTextColor="#999"
           value={this.state.description}
-          onChangeText={(description) => this.setState({ author })}
+          onChangeText={(description) => this.setState({ description })}
         />
 
         <TextInput
@@ -65,10 +132,13 @@ export default class New extends Component {
           placeholder="Hashtags"
           placeholderTextColor="#999"
           value={this.state.hashtags}
-          onChangeText={(hashtags) => this.setState({ author })}
+          onChangeText={(hashtags) => this.setState({ hashtags })}
         />
 
-        <TouchableOpacity style={styles.shareButton} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.shareButton}
+          onPress={this.handleSubmit}
+        >
           <Text style={styles.shareButtonText}>Compartilhar</Text>
         </TouchableOpacity>
       </View>
@@ -117,7 +187,7 @@ const styles = StyleSheet.create({
   },
 
   shareButton: {
-    backgroundColor: "#7159c1",
+    backgroundColor: "#d3d3d3",
     borderRadius: 4,
     height: 42,
     marginTop: 15,
@@ -129,7 +199,7 @@ const styles = StyleSheet.create({
   shareButtonText: {
     fontWeight: "bold",
     fontSize: 16,
-    color: "#FFF",
+    color: "#000",
     borderEndWidth: 10,
   },
 });

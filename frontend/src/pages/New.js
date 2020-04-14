@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import api from '../services/api'
+import api from '../services/api';
 
-import "./New.css"
+import './New.css';
 
 class New extends Component {
   state = {
@@ -9,10 +9,10 @@ class New extends Component {
     author: '',
     place: '',
     description: '',
-    hashtags: ''
+    hashtags: '',
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData();
@@ -26,15 +26,15 @@ class New extends Component {
     await api.post('posts', data);
 
     this.props.history.push('/');
-  }
+  };
 
-  hadleImageChange = e => {
+  hadleImageChange = (e) => {
     this.setState({ image: e.target.files[0] });
-  }
+  };
 
-  hadleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+  hadleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
     return (

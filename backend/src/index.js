@@ -8,11 +8,14 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-mongoose.connect('mongodb+srv://semana:semana@cluster0-mj2p3.mongodb.net/test?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  //Usando a propriedade abaixo devido a alerta de deprecated
-  useUnifiedTopology: true
-});
+mongoose.connect(
+  'mongodb+srv://semana:semana@cluster0-mj2p3.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    // Usando a propriedade abaixo devido a alerta de deprecated
+    useUnifiedTopology: true,
+  },
+);
 
 app.use((req, res, next) => {
   req.io = io;
@@ -22,9 +25,11 @@ app.use((req, res, next) => {
 
 app.use(cors());
 
-app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads', 'resized')));
+app.use(
+  '/files',
+  express.static(path.resolve(__dirname, '..', 'uploads', 'resized')),
+);
 
 app.use(require('./routes'));
 
 server.listen(3333);
-
