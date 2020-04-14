@@ -44,6 +44,11 @@ export default class Feed extends Component {
   }
 
   registerToSocket = () => {
+    // Se estiver executando a aplicação em um emulador iOS utilizar localhost no lugar do ip;
+    // Se estiver executando por usb ou wifi em um Android ou iOS utilizar o ip da máquina como no exemplo abaixo;
+    // Se estiver executando no Genymotion utilizar o ip 10.0.3.2 que vai redirecionar para o localhost da sua máquina;
+    // Se estiver executando em outro emulador ou o emulador do Android Studio utilizar o ip 10.0.2.2.
+    // Caso nenhum funcionar tente utilizar o ip da máquina
     const socket = io("http://192.168.31.227:3333");
 
     socket.on("post", (newPost) => {
@@ -81,6 +86,11 @@ export default class Feed extends Component {
               <Image
                 style={styles.feedImage}
                 source={{
+                  // Se estiver executando a aplicação em um emulador iOS utilizar localhost no lugar do ip;
+                  // Se estiver executando por usb ou wifi em um Android ou iOS utilizar o ip da máquina como no exemplo abaixo;
+                  // Se estiver executando no Genymotion utilizar o ip 10.0.3.2 que vai redirecionar para o localhost da sua máquina;
+                  // Se estiver executando em outro emulador ou o emulador do Android Studio utilizar o ip 10.0.2.2.
+                  // Caso nenhum funcionar tente utilizar o ip da máquina
                   uri: `http://192.168.31.227:3333/files/${item.image}`,
                 }}
               />
