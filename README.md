@@ -22,5 +22,5 @@ Project developed during RocketSeat's OmniStack 7.0 Week, based on the NodeJs, R
 ## <img src="https://raw.githubusercontent.com/alisonglima/semana-omnistack-7/master/heroku-logo.png" alt="Heroku" width="35"/> Deploy 
 
 The backend and Web App are hosted at [Heroku](https://www.heroku.com).https://raw.githubusercontent.com/alisonglima/semana-omnistack-7/master/heroku-logo.png
-- [WebApp](http://immense-gorge-75956.herokuapp.com/)
-- [Backend](http://ancient-forest-34525.herokuapp.com/)
+- [Frontend](https://semana-omnistack-7-frontend.herokuapp.com/)
+- [Backend](https://semana-omnistack-7-backend.herokuapp.com/)
