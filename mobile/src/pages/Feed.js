@@ -91,7 +91,7 @@ export default class Feed extends Component {
                   // Se estiver executando no Genymotion utilizar o ip 10.0.3.2 que vai redirecionar para o localhost da sua máquina;
                   // Se estiver executando em outro emulador ou o emulador do Android Studio utilizar o ip 10.0.2.2.
                   // Caso nenhum funcionar tente utilizar o ip da máquina
-                  uri: `http://192.168.31.227:3333/files/${item.image}`,
+                  uri: item.url,
                 }}
               />
               <View style={styles.feedItemFooter}>
