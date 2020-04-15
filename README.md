@@ -19,7 +19,7 @@ This project was developed with the following technologies:
 
 Project developed during RocketSeat's OmniStack 7.0 Week, based on the NodeJs, ReactJs and React Native stack. It was based on an Instagram clone.
 
-## :heroku: Deploy 
+## Deploy 
 
 The backend and Web App are hosted at [Heroku](https://www.heroku.com).
 - [WebApp](http://immense-gorge-75956.herokuapp.com/)
