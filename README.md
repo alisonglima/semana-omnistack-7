@@ -11,9 +11,9 @@
 
 This project was developed with the following technologies:
 
-- [Node.js](https://nodejs.org/en/)
-- [React](https://reactjs.org)
-- [React Native](https://facebook.github.io/react-native/)
+- [Node.js](https://nodejs.org/en/) <img src="https://raw.githubusercontent.com/alisonglima/semana-omnistack-7/master/node-logo.png" alt="NodeJS" width="35"/>
+- [React](https://reactjs.org) <img src="https://raw.githubusercontent.com/alisonglima/semana-omnistack-7/master/react-logo.png" alt="ReactJS" width="35"/>
+- [React Native](https://facebook.github.io/react-native/) <img src="https://raw.githubusercontent.com/alisonglima/semana-omnistack-7/master/react-native-logo.png" alt="React Native" width="35"/>
 
 ## 💻 Project
 
