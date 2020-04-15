@@ -1,6 +1,6 @@
-<h1 align="center">
+<h2 align="center">
   🚀 Semana OmniStack 7.0
-</h1>
+</h2>
 
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
